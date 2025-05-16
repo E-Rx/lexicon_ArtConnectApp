@@ -5,6 +5,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,30 +14,26 @@
 </head>
 
 <body>
-<header>
-  <h1>Welcome to ArtConnect</h1>
-  <p> a shared space where you and your friends can collect, explore, and celebrate your favorite artworks together. From timeless classics to modern gems, every contribution adds to our creative journey.</p>
-</header>
+  <header>
+    <h1>Welcome to ArtConnect</h1>
+    <p> a shared space where you and your friends can collect, explore, and celebrate your favorite artworks together.
+      From timeless classics to modern gems, every contribution adds to our creative journey.</p>
+  </header>
 
-<div class="container">
-
-
-          @foreach (var artwork in Model)
-          {
-
-              <div>
-                  <h2>@artwork.Title</h2>
-                  <p>@artwork.Artist; @artwork.Year</p>
-              </div>
-
-              <div>
-                  <small>Shared by @artwork.Contributor</small>
-              </div>
-
-
-
-          }
-</div>
+  <div class="container">
+    @foreach (var artwork in Model)
+    {
+      <div>
+        <h2>
+          <a asp-action="Details" asp-route-id="@artwork.Id">
+            @artwork.Title
+          </a>
+        </h2>
+        <p>@artwork.Artist; @artwork.Year</p>
+        <div><small>Shared by @artwork.Contributor</small></div>
+      </div>
+    }
+  </div>
 
 
   <div>
@@ -44,11 +41,11 @@
     <a asp-action="Create" role="button">Add artwork</a>
   </div>
 
-<footer>
-  <p>&copy; 2025 ArtConnect. All rights reserved.</p>
-
-</footer>
+  <footer>
+    <p>&copy; 2025 ArtConnect. All rights reserved.</p>
+  </footer>
 
 
 </body>
+
 </html>
