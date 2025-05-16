@@ -6,48 +6,44 @@ namespace ArtConnect.Web.Controllers
 {
     public class ArtworkController : Controller
     {
-        private readonly ArtworkService _artworkService;
+      private static ArtworkService artworkService = new ArtworkService();
 
-        public ArtworkController(ArtworkService artworkService)
-        {
-            _artworkService = artworkService;
-        }
-
-        // Affiche la liste des œuvres
+      // Index action to display all artworks
+      [HttpGet("")]
         public IActionResult Index()
         {
-            var artworks = _artworkService.GetAllArtworks();
+            var artworks = artworkService.GetAllArtworks();
             return View(artworks);
         }
 
-        // Affiche le formulaire de création
-        [HttpGet]
+        // Create action to display the form for adding a new artwork
+        [HttpGet("create")]
         public IActionResult Create()
         {
             return View();
         }
 
-        // Traite le formulaire de création
-        [HttpPost]
-        public IActionResult Create(ArtworkViewModel viewModel)
+        // Post action to handle the form submission for adding a new artwork
+        [HttpPost("create")]
+        public IActionResult Create(Artwork artwork)
         {
             if (!ModelState.IsValid)
             {
-                return View(viewModel);
+                return View();
             }
 
             var newArtwork = new Artwork
             {
-                Title = viewModel.Title,
-                Artist = viewModel.Artist,
-                Year = viewModel.Year,
-                Style = viewModel.Style,
-                Description = viewModel.Description,
-                ImageUrl = viewModel.ImageUrl,
-                Contributor = viewModel.Contributor
+                Title = artwork.Title,
+                Artist = artwork.Artist,
+                Year = artwork.Year,
+                Style = artwork.Style,
+                Description = artwork.Description,
+                ImageUrl = artwork.ImageUrl,
+                Contributor = artwork.Contributor
             };
 
-            _artworkService.AddArtwork(newArtwork);
+            artworkService.AddArtwork(newArtwork);
             return RedirectToAction(nameof(Index));
         }
     }

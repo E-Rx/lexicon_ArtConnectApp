@@ -1,5 +1,51 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using ArtConnect.Web.Controllers
+@using ArtConnect.Web.Models
+@model Artwork[]
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/@@picocss/pico@@latest/css/pico.classless.min.css">
+  <title>ArtConnect Home</title>
+</head>
+
+<body>
+<header>
+  <h1>Welcome to ArtConnect</h1>
+  <p> a shared space where you and your friends can collect, explore, and celebrate your favorite artworks together. From timeless classics to modern gems, every contribution adds to our creative journey.</p>
+</header>
+
+<div class="container">
+          @foreach (var artwork in Model)
+          {
+
+              <div>
+                  <h2>@artwork.Title</h2>
+                  <p>@artwork.Artist; @artwork.Year</p>
+              </div>
+
+              <div>
+                  <small>Shared by @artwork.Contributor</small>
+              </div>
+
+
+          }
+</div>
+
+
+  <div>
+    <p>Want to share a piece that inspires you?</p>
+    <a asp-action="Create" role="button">Add artwork</a>
+  </div>
+
+<footer>
+  <p>&copy; 2025 ArtConnect. All rights reserved.</p>
+
+</footer>
+
+
+</body>
+</html>
