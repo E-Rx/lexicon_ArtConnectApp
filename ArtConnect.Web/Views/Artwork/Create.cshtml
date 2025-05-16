@@ -1,5 +1,66 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿  @model ArtConnect.Web.Models.Artwork
+  @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/@@picocss/pico@@latest/css/pico.classless.min.css">
+
+  <title>Document</title>
+</head>
+<body>
+
+
+<form asp-controller="Artworks" asp-action="Create" >
+    <div>
+        <label asp-for="Title"></label>
+        <input asp-for="Title" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Artist"></label>
+        <input asp-for="Artist" />
+        <span asp-validation-for="Artist" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Year"></label>
+        <input asp-for="Year" type="number" />
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Style"></label>
+        <input asp-for="Style" />
+        <span asp-validation-for="Style" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="ImageUrl"></label>
+        <input asp-for="ImageUrl" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Contributor"></label>
+        <input asp-for="Contributor" />
+        <span asp-validation-for="Contributor" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Add Artwork</button>
+</form>
+
+
+
+</body>
+</html>
