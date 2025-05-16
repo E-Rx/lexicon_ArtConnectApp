@@ -39,10 +39,10 @@ namespace ArtConnect.Web.Services
         ];
 
         // GetAll method
-        publi Artwork
-        {
-            return artworks;
-        }
+        public Artwork[] GetAllArtworks() => artworks
+            .OrderBy(a => a.Title)
+            .ToArray();
+       
 
         // AddArtwork method
         public void AddArtwork(Artwork artwork)
