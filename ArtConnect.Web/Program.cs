@@ -1,4 +1,9 @@
+using ArtConnect.Web.Services;
+using ArtConnect.Web.Models;
+
+
 namespace ArtConnect.Web
+
 {
     public class Program
     {
@@ -7,6 +12,10 @@ namespace ArtConnect.Web
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllersWithViews();
             var app = builder.Build();
+
+            // Inject dependencies
+            builder.Services.AddSingleton<ArtworkService>();
+
 
             // Images
             app.UseStaticFiles();

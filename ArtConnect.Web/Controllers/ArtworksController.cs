@@ -1,39 +1,78 @@
 ﻿using ArtConnect.Web.Models;
 using ArtConnect.Web.Services;
 using Microsoft.AspNetCore.Mvc;
+using ArtConnect.Web.ViewModels;
 
-namespace ArtConnect.Web.Controllers
+namespace ArtConnect.Web.Controllers;
+
+// Controller using primary constructor (C# 12 feature)
+public class ArtworkController(ArtworkService artworkService) : Controller
 {
-  public class ArtworkController : Controller
-  {
-    private static ArtworkService artworkService = new ArtworkService();
-
-    // Index action to display all artworks
+    // GET: / => Displays a list of all artworks
     [HttpGet("")]
     public IActionResult Index()
-    {
-      var artworks = artworkService.GetAllArtworks();
-      return View(artworks);
-    }
+{
+    var artworks = artworkService.GetAllArtworks();
 
-    // Create action to display the form for adding a new artwork
+    var vm = new IndexVM
+    {
+        Artworks = artworks.Select(a => new IndexVM.ArtworkVM
+        {
+            Id = a.Id,
+            Title = a.Title,
+            Artist = a.Artist,
+            ImageUrl = a.ImageUrl,
+            Contributor = a.Contributor
+        }).ToArray()
+    };
+
+    return View(vm);
+}
+
+    // GET: /create => Displays the form for creating a new artwork
     [HttpGet("create")]
     public IActionResult Create()
     {
-      return View();
+        return View();
     }
 
-    // Post action to handle the form submission for adding a new artwork
+    // POST: /create => Handles form submission for creating a new artwork
     [HttpPost("create")]
     public IActionResult Create(Artwork artwork)
     {
-      if (!ModelState.IsValid)
-      {
-        return View();
-      }
+        if (!ModelState.IsValid)
+        {
+            return View(artwork);
+        }
 
-      var newArtwork = new Artwork
-      {
+        var newArtwork = new Artwork
+        {
+            Title = artwork.Title,
+            Artist = artwork.Artist,
+            Year = artwork.Year,
+            Style = artwork.Style,
+            Description = artwork.Description,
+            ImageUrl = artwork.ImageUrl,
+            Contributor = artwork.Contributor
+        };
+
+        artworkService.AddArtwork(newArtwork);
+        return RedirectToAction(nameof(Index));
+    }
+
+    // GET: /Details/{id} => Displays the details of a specific artwork
+    [HttpGet("Details/{id}")]
+    public IActionResult Details(int id)
+{
+    var artwork = artworkService.GetArtworkById(id);
+    if (artwork == null)
+    {
+        return NotFound();
+    }
+
+    var vm = new DetailsVM
+    {
+        Id = artwork.Id,
         Title = artwork.Title,
         Artist = artwork.Artist,
         Year = artwork.Year,
@@ -41,22 +80,8 @@ namespace ArtConnect.Web.Controllers
         Description = artwork.Description,
         ImageUrl = artwork.ImageUrl,
         Contributor = artwork.Contributor
-      };
+    };
 
-      artworkService.AddArtwork(newArtwork);
-      return RedirectToAction(nameof(Index));
-    }
-
-    // Details action to display a specific artwork
-    [HttpGet("Details/{id}")]
-    public IActionResult Details(int id)
-    {
-      var artwork = artworkService.GetArtworkById(id);
-      if (artwork == null)
-      {
-        return NotFound();
-      }
-      return View(artwork);
-    }
-  }
+    return View(vm);
+}
 }
