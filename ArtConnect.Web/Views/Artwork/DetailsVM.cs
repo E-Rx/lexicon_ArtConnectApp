@@ -1,4 +1,4 @@
-﻿namespace ArtConnect.Web.ViewModels
+﻿namespace ArtConnect.Web.Views.Artwork
 {
     public class DetailsVM
     {

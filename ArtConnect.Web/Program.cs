@@ -11,11 +11,11 @@ namespace ArtConnect.Web
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllersWithViews();
-            var app = builder.Build();
 
             // Inject dependencies
             builder.Services.AddSingleton<ArtworkService>();
 
+            var app = builder.Build();
 
             // Images
             app.UseStaticFiles();

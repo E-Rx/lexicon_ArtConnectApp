@@ -1,85 +1,84 @@
-﻿@model ArtConnect.Web.ViewModels.CreateVM
+﻿@model CreateVM
 
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    ViewData["Title"] = "Add New Artwork";
-    Layout = "_Layout";
+  ViewData["Title"] = "Add New Artwork";
+  Layout = "_Layout";
 }
 
-    <header class="text-center mb-4">
-      <h1 class="display-5">Add New Artwork</h1>
-      <p class="lead">Share a piece that inspires you with the ArtConnect community.</p>
-    </header>
+<header class="text-center mb-4">
+  <h1 class="display-5">Add New Artwork</h1>
+  <p class="lead">Share a piece that inspires you with the ArtConnect community.</p>
+</header>
 
-    <form asp-controller="Artwork" asp-action="Create" method="post" class="needs-validation" novalidate>
-      <div class="row g-3">
-        <div class="col-md-6">
-          <label asp-for="Title" class="form-label"></label>
-          <input asp-for="Title" class="form-control" />
-          <span asp-validation-for="Title" class="text-danger"></span>
-        </div>
-
-        <div class="col-md-6">
-          <label asp-for="Artist" class="form-label"></label>
-          <input asp-for="Artist" class="form-control" />
-          <span asp-validation-for="Artist" class="text-danger"></span>
-        </div>
-
-        <div class="col-md-4">
-          <label asp-for="Year" class="form-label"></label>
-          <input asp-for="Year" type="number" class="form-control" />
-          <span asp-validation-for="Year" class="text-danger"></span>
-        </div>
-
-        <div class="col-md-8">
-          <label asp-for="Style" class="form-label"></label>
-          <input asp-for="Style" class="form-control" />
-          <span asp-validation-for="Style" class="text-danger"></span>
-        </div>
-
-        <div class="col-12">
-          <label asp-for="Description" class="form-label"></label>
-          <textarea asp-for="Description" class="form-control" rows="4"></textarea>
-          <span asp-validation-for="Description" class="text-danger"></span>
-        </div>
-
-        <div class="col-12">
-          <label asp-for="ImageUrl" class="form-label"></label>
-          <input asp-for="ImageUrl" class="form-control" />
-          <span asp-validation-for="ImageUrl" class="text-danger"></span>
-        </div>
-
-        <div class="col-12">
-          <label asp-for="Contributor" class="form-label"></label>
-          <input asp-for="Contributor" class="form-control" />
-          <span asp-validation-for="Contributor" class="text-danger"></span>
-        </div>
-
-        <div class="col-12 text-center mt-4">
-          <button type="submit" class="btn btn-success px-4">Add Artwork</button>
-        </div>
-      </div>
-    </form>
-
-    <div class="text-center mt-4">
-      <a asp-action="Index" class="btn btn-link">Back to gallery</a>
+<form asp-controller="Artwork" asp-action="Create" method="post" class="needs-validation" novalidate>
+  <div class="row g-3">
+    <div class="col-md-6">
+      <label asp-for="Title" class="form-label"></label>
+      <input asp-for="Title" class="form-control" />
+      <span asp-validation-for="Title" class="text-danger"></span>
     </div>
+
+    <div class="col-md-6">
+      <label asp-for="Artist" class="form-label"></label>
+      <input asp-for="Artist" class="form-control" />
+      <span asp-validation-for="Artist" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-4">
+      <label asp-for="Year" class="form-label"></label>
+      <input asp-for="Year" type="number" class="form-control" />
+      <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-8">
+      <label asp-for="Style" class="form-label"></label>
+      <input asp-for="Style" class="form-control" />
+      <span asp-validation-for="Style" class="text-danger"></span>
+    </div>
+
+    <div class="col-12">
+      <label asp-for="Description" class="form-label"></label>
+      <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+      <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="col-12">
+      <label asp-for="ImageUrl" class="form-label"></label>
+      <input asp-for="ImageUrl" class="form-control" />
+      <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+
+    <div class="col-12">
+      <label asp-for="Contributor" class="form-label"></label>
+      <input asp-for="Contributor" class="form-control" />
+      <span asp-validation-for="Contributor" class="text-danger"></span>
+    </div>
+
+    <div class="col-12 text-center mt-4">
+      <button type="submit" class="btn btn-success px-4">Add Artwork</button>
+    </div>
+  </div>
+</form>
+
+<div class="text-center mt-4">
+  <a asp-action="Index" class="btn btn-link">Back to gallery</a>
+</div>
 
 @section scripts
 {
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.j"
-            asp-fallback-src="/scripts/jquery/jquery.min.js"
-            asp-fallback-test="window.jQuery">
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.j"
+    asp-fallback-src="/scripts/jquery/jquery.min.js"
+    asp-fallback-test="window.jQuery">
     </script>
 
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.2/jquery.validate.min.j"
-            asp-fallback-src="/scripts/jquery-validate/jquery.validate.min.js"
-            asp-fallback-test="window.jQuery && window.jQuery.validator">
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.2/jquery.validate.min.j"
+    asp-fallback-src="/scripts/jquery-validate/jquery.validate.min.js"
+    asp-fallback-test="window.jQuery && window.jQuery.validator">
     </script>
 
-    <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.j"
-            asp-fallback-src="/scripts/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
-            asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive">
+  <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.j"
+    asp-fallback-src="/scripts/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+    asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive">
     </script>
 }

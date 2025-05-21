@@ -1,35 +1,32 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@using ArtConnect.Web.Controllers
-@using ArtConnect.Web.Models
-@model ArtConnect.Web.ViewModels.DetailsVM
+﻿@using ArtConnect.Web.Controllers
+@model DetailsVM
 
 
 @{
-    ViewData["Title"] = "Artwork Details";  
-    Layout = "_Layout";
+  ViewData["Title"] = "Artwork Details";
+  Layout = "_Layout";
 }
 
-    <div class="text-center mb-5">
-      <h1 class="display-5">@Model.Title</h1>
-      <p class="text-muted">Shared by @Model.Contributor</p>
-    </div>
+<div class="text-center mb-5">
+  <h1 class="display-5">@Model.Title</h1>
+  <p class="text-muted">Shared by @Model.Contributor</p>
+</div>
 
-    <div class="row">
-      <div class="col-md-6 mb-4">
-        <img src="@Model.ImageUrl" alt="@Model.Title" class="img-fluid rounded shadow-sm w-100">
-      </div>
+<div class="row">
+  <div class="col-md-6 mb-4">
+    <img src="@Model.ImageUrl" alt="@Model.Title" class="img-fluid rounded shadow-sm w-100">
+  </div>
 
-      <div class="col-md-6">
-        <ul class="list-group list-group-flush mb-4">
-          <li class="list-group-item"><strong>Artist:</strong> @Model.Artist</li>
-          <li class="list-group-item"><strong>Year:</strong> @Model.Year</li>
-          <li class="list-group-item"><strong>Style:</strong> @Model.Style</li>
-        </ul>
-        <p>@Model.Description</p>
-      </div>
-    </div>
+  <div class="col-md-6">
+    <ul class="list-group list-group-flush mb-4">
+      <li class="list-group-item"><strong>Artist:</strong> @Model.Artist</li>
+      <li class="list-group-item"><strong>Year:</strong> @Model.Year</li>
+      <li class="list-group-item"><strong>Style:</strong> @Model.Style</li>
+    </ul>
+    <p>@Model.Description</p>
+  </div>
+</div>
 
-    <div class="text-center mt-4">
-      <a asp-action="Index" class="btn btn-outline-primary">Back to gallery</a>
-    </div>
-
+<div class="text-center mt-4">
+  <a asp-action="Index" class="btn btn-outline-primary">Back to gallery</a>
+</div>

@@ -2,11 +2,11 @@
 
 namespace ArtConnect.Web.Services
 {
-  public class ArtworkService
-  {
-    private List<Artwork> artworks =
-    [
-        new Artwork
+    public class ArtworkService
+    {
+        private List<Artwork> artworks =
+        [
+            new Artwork
             {
                 Id= 123,
                 Title = "Water Lilies",
@@ -39,28 +39,28 @@ namespace ArtConnect.Web.Services
                 ImageUrl = "https://www.artic.edu/iiif/2/9036870e-9ec4-19ab-3d73-3cbf79c1af8b/full/843,/0/default.jpg",
                 Contributor = "Rose"
             }
-    ];
+        ];
 
-    // GetAll method
-    public Artwork[] GetAllArtworks() => artworks
-        .OrderBy(a => a.Title)
-        .ToArray();
+        // GetAll method
+        public Artwork[] GetAllArtworks() => artworks
+            .OrderBy(a => a.Title)
+            .ToArray();
 
 
-    // AddArtwork method
-    public void AddArtwork(Artwork artwork)
-    {
-      // Generate a new ID for the artwork
-      artwork.Id = artworks.Count < 0 ? 1 : artworks.Max(a => a.Id) + 1;
-      artworks.Add(artwork);
+        // AddArtwork method
+        public void AddArtwork(Artwork artwork)
+        {
+            // Generate a new ID for the artwork
+            artwork.Id = artworks.Count < 0 ? 1 : artworks.Max(a => a.Id) + 1;
+            artworks.Add(artwork);
+
+        }
+
+        // GetArtworkById method
+        public Artwork GetArtworkById(int id) => artworks
+            .Single(a => a.Id == id);
 
     }
-
-    // GetArtworkById method
-    public Artwork GetArtworkById(int id) => artworks
-        .Single(a => a.Id == id);
-
-  }
 
 
 

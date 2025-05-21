@@ -17,10 +17,10 @@ namespace ArtConnect.Web.Models
         public string Style { get; set; } = null!;
 
         [Required(ErrorMessage = "Year is required")]
-        [Range(0, 2100, ErrorMessage = "Year must be between 0 and 2100")]
+        [Range(0, 2026, ErrorMessage = "Year must be between 0 and 2025")]
         public int Year { get; set; }
 
-    
+
         [Required(ErrorMessage = "Description is required")]
         [StringLength(500, ErrorMessage = "Description cannot exceed 500 characters")]
         public string Description { get; set; } = null!;
@@ -31,8 +31,6 @@ namespace ArtConnect.Web.Models
 
         [Required(ErrorMessage = "You must specify a name")]
         public string Contributor { get; set; } = null!;
-
-
 
     }
 }
