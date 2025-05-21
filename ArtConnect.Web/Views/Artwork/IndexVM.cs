@@ -1,4 +1,5 @@
-﻿namespace ArtConnect.Web.Views.Artwork
+﻿
+namespace ArtConnect.Web.Views.Artwork
 {
     public class IndexVM
     {

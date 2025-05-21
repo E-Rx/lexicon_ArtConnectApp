@@ -33,7 +33,7 @@ public class ArtworkController(ArtworkService artworkService) : Controller
   [HttpGet("create")]
   public IActionResult Create()
   {
-    return View();
+    return View(new CreateVM());
   }
 
   // POST: /create => Handles form submission for creating a new artwork 
