@@ -1,7 +1,7 @@
 ﻿using ArtConnect.Web.Models;
 using ArtConnect.Web.Services;
 using Microsoft.AspNetCore.Mvc;
-using ArtConnect.Web.ViewModels;
+using ArtConnect.Web.Views.Artwork;
 
 namespace ArtConnect.Web.Controllers;
 
