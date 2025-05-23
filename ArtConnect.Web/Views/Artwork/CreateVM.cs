@@ -2,7 +2,7 @@
 
 namespace ArtConnect.Web.Views.Artwork;
 
-// ViewModel for the Create view
+
 public class CreateVM
 {
     [Required(ErrorMessage = "Title is required")]
