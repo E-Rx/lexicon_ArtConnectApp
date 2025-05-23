@@ -10,7 +10,7 @@ Projektet är en övning i att bygga en fullständig MVC-applikation med klient-
 * Lägg till nya konstverk via ett formulär
 * Visa detaljerad information om varje konstverk
 * Formulärsvalidering på både klient- och serversidan
-* Standardbild visas om ingen bild-URL anges
+
 
 ## 🧰 Teknologier
 
